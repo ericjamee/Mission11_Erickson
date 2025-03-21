@@ -1,0 +1,6 @@
+@Mission11_Erickson.API_HostAddress = http://localhost:5260
+
+GET {{Mission11_Erickson.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
