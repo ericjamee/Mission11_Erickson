@@ -1,10 +1,11 @@
-export interface Project {
-    bookId: number;
+export interface Book {
+    bookID: number;
     title: string;
     author: string;
     publisher: string;
     isbn: string;
     category: string;
-    numberOfPages: number;
+    pageCount: number;
     price: number;
-}
+  }
+  

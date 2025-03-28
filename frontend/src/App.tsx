@@ -1,12 +1,17 @@
-import './App.css'
-import ProjectList from './ProjectList'
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProjectList from './ProjectList';
+import CartPage from './pages/CartPage';
 
 function App() {
   return (
-    <>
-      <ProjectList/>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<ProjectList />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

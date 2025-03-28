@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mission11_Erickson.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be08f9b70740cbce6a8cfececd2930ce30ca63a6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mission11_Erickson.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mission11_Erickson.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -153,10 +153,10 @@ C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\ba
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Mission11_Erickson.API.props
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Mission11_Erickson.API.props
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\Mission1.28AECB2B.Up2Date
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\Mission11_Erickson.API.dll
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\refint\Mission11_Erickson.API.dll
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\Mission11_Erickson.API.pdb
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\Mission11_Erickson.API.genruntimeconfig.cache
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\ref\Mission11_Erickson.API.dll
+C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\Mission11_Erickson.API.sourcelink.json
