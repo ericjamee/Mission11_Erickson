@@ -3,6 +3,7 @@ import { Book } from './types/Book';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useCart } from './context/CartContext';
 import CartSummary from './components/CartSummary';
+import { Link } from 'react-router-dom';
 
 
 function ProjectList() {
@@ -20,7 +21,7 @@ function ProjectList() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch(`https://localhost:5000/Bookstore/Categories`);
+                const response = await fetch(`https://localhost:5000/BookStore/Categories`);
                 if (!response.ok) throw new Error("Failed to fetch categories");
                 const data = await response.json();
                 setCategories(data);
@@ -36,7 +37,7 @@ function ProjectList() {
         const fetchBooks = async () => {
             try {
                 const categoryQuery = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-                const response = await fetch(`https://localhost:5000/Bookstore/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${categoryQuery}`);
+                const response = await fetch(`https://localhost:5000/BookStore/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${categoryQuery}`);
                 if (!response.ok) throw new Error("Failed to fetch data");
                 const data = await response.json();
                 setBooks(data.books);
@@ -50,7 +51,10 @@ function ProjectList() {
 
     return (
         <div className="container mt-4">
-            <h1 className="text-center">📚 Bookstore</h1>
+            <div className="d-flex justify-content-between align-items-center">
+                <h1>📚 Bookstore</h1>
+                <Link to="/adminbooks" className="btn btn-outline-dark">Admin</Link>
+            </div>
             <CartSummary />
 
             {/* Category Filter */}
