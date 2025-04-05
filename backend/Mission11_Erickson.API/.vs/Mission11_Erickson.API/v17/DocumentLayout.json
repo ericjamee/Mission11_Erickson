@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\je7er\\OneDrive - Brigham Young University\\Desktop\\Mission11_Erickson\\backend\\Mission11_Erickson.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7B00EB34-073E-4285-ADA1-249760921EDB}|Mission11_Erickson.API.csproj|c:\\users\\je7er\\onedrive - brigham young university\\desktop\\mission11_erickson\\backend\\mission11_erickson.api\\controllers\\bookstorecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B00EB34-073E-4285-ADA1-249760921EDB}|Mission11_Erickson.API.csproj|solutionrelative:controllers\\bookstorecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookStoreController.cs",
+              "DocumentMoniker": "C:\\Users\\je7er\\OneDrive - Brigham Young University\\Desktop\\Mission11_Erickson\\backend\\Mission11_Erickson.API\\Controllers\\BookStoreController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookStoreController.cs",
+              "ToolTip": "C:\\Users\\je7er\\OneDrive - Brigham Young University\\Desktop\\Mission11_Erickson\\backend\\Mission11_Erickson.API\\Controllers\\BookStoreController.cs",
+              "RelativeToolTip": "Controllers\\BookStoreController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAQwBAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T23:16:16.605Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

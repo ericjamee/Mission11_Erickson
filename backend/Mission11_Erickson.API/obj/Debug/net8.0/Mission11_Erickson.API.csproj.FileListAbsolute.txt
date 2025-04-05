@@ -160,3 +160,4 @@ C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\ba
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\Mission11_Erickson.API.genruntimeconfig.cache
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\ref\Mission11_Erickson.API.dll
 C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\obj\Debug\net8.0\Mission11_Erickson.API.sourcelink.json
+C:\Users\je7er\OneDrive - Brigham Young University\Desktop\Mission11_Erickson\backend\Mission11_Erickson.API\bin\Debug\net8.0\Bookstore.sqlite
