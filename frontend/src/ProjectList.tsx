@@ -21,9 +21,12 @@ function ProjectList() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch(`https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/Categories`);
-                if (!response.ok) throw new Error("Failed to fetch categories");
+                console.log("Fetching categories...");
+                const response = await fetch(`https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/Categories`);
+                console.log("Categories response:", response);
+                if (!response.ok) throw new Error(`Failed to fetch categories: ${response.status}`);
                 const data = await response.json();
+                console.log("Categories data:", data);
                 setCategories(data);
             } catch (error) {
                 console.error("Error fetching categories:", error);
@@ -36,10 +39,15 @@ function ProjectList() {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
+                console.log("Fetching books...");
                 const categoryQuery = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-                const response = await fetch(`https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${categoryQuery}`);
-                if (!response.ok) throw new Error("Failed to fetch data");
+                const url = `https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${categoryQuery}`;
+                console.log("Fetching URL:", url);
+                const response = await fetch(url);
+                console.log("Books response:", response);
+                if (!response.ok) throw new Error(`Failed to fetch data: ${response.status}`);
                 const data = await response.json();
+                console.log("Books data:", data);
                 setBooks(data.books);
                 setTotalPages(Math.ceil(data.totalNumBooks / pageSize));
             } catch (error) {

@@ -41,11 +41,16 @@ const BookForm = () => {
     // Fetch categories
     const fetchCategories = async () => {
       try {
-        const response = await fetch('https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/Categories');
+        console.log("BookForm: Fetching categories...");
+        const url = 'https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/Categories';
+        console.log("BookForm: Categories URL:", url);
+        const response = await fetch(url);
+        console.log("BookForm: Categories response:", response);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
+        console.log("BookForm: Categories data:", data);
         setCategories(data);
       } catch (err) {
         console.error('Error fetching categories:', err);
@@ -57,11 +62,16 @@ const BookForm = () => {
       if (isEditing && id) {
         setLoading(true);
         try {
-          const response = await fetch(`https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/Book/${id}`);
+          console.log(`BookForm: Fetching book ${id}...`);
+          const url = `https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/Book/${id}`;
+          console.log("BookForm: Book URL:", url);
+          const response = await fetch(url);
+          console.log("BookForm: Book response:", response);
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
           const data = await response.json();
+          console.log("BookForm: Book data:", data);
           setBook(data);
         } catch (err) {
           console.error('Error fetching book:', err);
@@ -113,10 +123,14 @@ const BookForm = () => {
     setLoading(true);
     try {
       const url = isEditing 
-        ? `https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/UpdateBook/${id}`
-        : 'https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/AddBook';
+        ? `https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/UpdateBook/${id}`
+        : 'https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/AddBook';
       
       const method = isEditing ? 'PUT' : 'POST';
+      
+      console.log(`BookForm: ${isEditing ? 'Updating' : 'Adding'} book...`);
+      console.log("BookForm: URL:", url);
+      console.log("BookForm: Data:", book);
       
       const response = await fetch(url, {
         method,
@@ -125,6 +139,8 @@ const BookForm = () => {
         },
         body: JSON.stringify(book),
       });
+      
+      console.log("BookForm: Response:", response);
       
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
