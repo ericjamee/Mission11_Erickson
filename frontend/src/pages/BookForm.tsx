@@ -1,17 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-
-interface Book {
-  bookID: number;
-  title: string;
-  author: string;
-  publisher: string;
-  isbn: string;
-  classification: string;
-  category: string;
-  pageCount: number;
-  price: number;
-}
+import { fetchCategories, fetchBookById, addBook, updateBook } from '../api/ProjectsAPI';
+import { Book } from '../types/Book';
 
 interface FormErrors {
   [key: string]: string;
@@ -38,51 +28,29 @@ const BookForm = () => {
   });
 
   useEffect(() => {
-    // Fetch categories
-    const fetchCategories = async () => {
+    // Fetch categories and book data if editing
+    const loadData = async () => {
       try {
-        console.log("BookForm: Fetching categories...");
-        const url = 'https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/Categories';
-        console.log("BookForm: Categories URL:", url);
-        const response = await fetch(url);
-        console.log("BookForm: Categories response:", response);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log("BookForm: Categories data:", data);
-        setCategories(data);
-      } catch (err) {
-        console.error('Error fetching categories:', err);
-      }
-    };
-
-    // Fetch book data if editing
-    const fetchBook = async () => {
-      if (isEditing && id) {
-        setLoading(true);
-        try {
-          console.log(`BookForm: Fetching book ${id}...`);
-          const url = `https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/Book/${id}`;
-          console.log("BookForm: Book URL:", url);
-          const response = await fetch(url);
-          console.log("BookForm: Book response:", response);
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+        // Load categories
+        const categoriesData = await fetchCategories();
+        setCategories(categoriesData);
+        
+        // Load book data if editing
+        if (isEditing && id) {
+          setLoading(true);
+          try {
+            const bookData = await fetchBookById(id);
+            setBook(bookData);
+          } finally {
+            setLoading(false);
           }
-          const data = await response.json();
-          console.log("BookForm: Book data:", data);
-          setBook(data);
-        } catch (err) {
-          console.error('Error fetching book:', err);
-        } finally {
-          setLoading(false);
         }
+      } catch (err) {
+        console.error('Error loading data:', err);
       }
     };
-
-    fetchCategories();
-    fetchBook();
+    
+    loadData();
   }, [id, isEditing]);
 
   const validateForm = (): boolean => {
@@ -122,28 +90,10 @@ const BookForm = () => {
     
     setLoading(true);
     try {
-      const url = isEditing 
-        ? `https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/UpdateBook/${id}`
-        : 'https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/AddBook';
-      
-      const method = isEditing ? 'PUT' : 'POST';
-      
-      console.log(`BookForm: ${isEditing ? 'Updating' : 'Adding'} book...`);
-      console.log("BookForm: URL:", url);
-      console.log("BookForm: Data:", book);
-      
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(book),
-      });
-      
-      console.log("BookForm: Response:", response);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      if (isEditing && id) {
+        await updateBook(id, book);
+      } else {
+        await addBook(book);
       }
       
       // Redirect to admin books page after successful operation

@@ -1,17 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-interface Book {
-  bookID: number;
-  title: string;
-  author: string;
-  publisher: string;
-  isbn: string;
-  classification: string;
-  category: string;
-  pageCount: number;
-  price: number;
-}
+import { fetchBooks, deleteBook } from '../api/ProjectsAPI';
+import { Book } from '../types/Book';
 
 const AdminBooks = () => {
   const [books, setBooks] = useState<Book[]>([]);
@@ -19,51 +9,28 @@ const AdminBooks = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchBooks();
+    loadBooks();
   }, []);
 
-  const fetchBooks = async () => {
+  const loadBooks = async () => {
     try {
       setLoading(true);
-      console.log("Admin: Fetching books...");
-      const url = 'https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/AllBooks?pageSize=100';
-      console.log("Admin: Fetching URL:", url);
-      const response = await fetch(url);
-      console.log("Admin: Books response:", response);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      console.log("Admin: Books data:", data);
+      const data = await fetchBooks(100, 1, 'asc', '');
       setBooks(data.books);
       setLoading(false);
     } catch (err) {
       setError('Failed to fetch books. Please try again later.');
       setLoading(false);
-      console.error('Error fetching books:', err);
+      console.error('Error loading books:', err);
     }
   };
 
   const handleDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this book?')) {
       try {
-        console.log(`Admin: Deleting book ${id}...`);
-        const url = `https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/DeleteBook/${id}`;
-        console.log("Admin: Delete URL:", url);
-        const response = await fetch(url, {
-          method: 'DELETE',
-        });
-        console.log("Admin: Delete response:", response);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        
+        await deleteBook(id);
         // Update the books list after successful deletion
         setBooks(books.filter(book => book.bookID !== id));
-        
       } catch (err) {
         console.error('Error deleting book:', err);
         alert('Failed to delete book. Please try again.');

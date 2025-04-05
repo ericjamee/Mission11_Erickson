@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useCart } from './context/CartContext';
 import CartSummary from './components/CartSummary';
 import { Link } from 'react-router-dom';
+import { fetchBooks, fetchCategories } from './api/ProjectsAPI';
 
 
 function ProjectList() {
@@ -19,42 +20,29 @@ function ProjectList() {
 
     // Fetch categories once
     useEffect(() => {
-        const fetchCategories = async () => {
+        const loadCategories = async () => {
             try {
-                console.log("Fetching categories...");
-                const response = await fetch(`https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/Categories`);
-                console.log("Categories response:", response);
-                if (!response.ok) throw new Error(`Failed to fetch categories: ${response.status}`);
-                const data = await response.json();
-                console.log("Categories data:", data);
+                const data = await fetchCategories();
                 setCategories(data);
             } catch (error) {
-                console.error("Error fetching categories:", error);
+                console.error("Error loading categories:", error);
             }
         };
-        fetchCategories();
+        loadCategories();
     }, []);
 
     // Fetch books whenever filters/pagination/sort change
     useEffect(() => {
-        const fetchBooks = async () => {
+        const loadBooks = async () => {
             try {
-                console.log("Fetching books...");
-                const categoryQuery = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-                const url = `https://mission13erickson-backend2-fdcpbta9cpgqafdu.eastus-01.azurewebsites.net/BookStore/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${categoryQuery}`;
-                console.log("Fetching URL:", url);
-                const response = await fetch(url);
-                console.log("Books response:", response);
-                if (!response.ok) throw new Error(`Failed to fetch data: ${response.status}`);
-                const data = await response.json();
-                console.log("Books data:", data);
+                const data = await fetchBooks(pageSize, pageNum, sortOrder, selectedCategory);
                 setBooks(data.books);
                 setTotalPages(Math.ceil(data.totalNumBooks / pageSize));
             } catch (error) {
-                console.error("Error fetching books:", error);
+                console.error("Error loading books:", error);
             }
         };
-        fetchBooks();
+        loadBooks();
     }, [pageSize, pageNum, sortOrder, selectedCategory]);
 
     return (
