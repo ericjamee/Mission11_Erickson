@@ -25,7 +25,7 @@ const AdminBooks = () => {
   const fetchBooks = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://localhost:5000/BookStore/AllBooks?pageSize=100');
+      const response = await fetch('https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/AllBooks?pageSize=100');
       
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -44,7 +44,7 @@ const AdminBooks = () => {
   const handleDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this book?')) {
       try {
-        const response = await fetch(`https://localhost:5000/BookStore/DeleteBook/${id}`, {
+        const response = await fetch(`https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/DeleteBook/${id}`, {
           method: 'DELETE',
         });
         

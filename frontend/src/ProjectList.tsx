@@ -21,7 +21,7 @@ function ProjectList() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch(`https://localhost:5000/BookStore/Categories`);
+                const response = await fetch(`https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/Categories`);
                 if (!response.ok) throw new Error("Failed to fetch categories");
                 const data = await response.json();
                 setCategories(data);
@@ -37,7 +37,7 @@ function ProjectList() {
         const fetchBooks = async () => {
             try {
                 const categoryQuery = selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : '';
-                const response = await fetch(`https://localhost:5000/BookStore/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${categoryQuery}`);
+                const response = await fetch(`https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${categoryQuery}`);
                 if (!response.ok) throw new Error("Failed to fetch data");
                 const data = await response.json();
                 setBooks(data.books);

@@ -41,7 +41,7 @@ const BookForm = () => {
     // Fetch categories
     const fetchCategories = async () => {
       try {
-        const response = await fetch('https://localhost:5000/BookStore/Categories');
+        const response = await fetch('https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/Categories');
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -57,7 +57,7 @@ const BookForm = () => {
       if (isEditing && id) {
         setLoading(true);
         try {
-          const response = await fetch(`https://localhost:5000/BookStore/Book/${id}`);
+          const response = await fetch(`https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/Book/${id}`);
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
@@ -113,8 +113,8 @@ const BookForm = () => {
     setLoading(true);
     try {
       const url = isEditing 
-        ? `https://localhost:5000/BookStore/UpdateBook/${id}`
-        : 'https://localhost:5000/BookStore/AddBook';
+        ? `https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/UpdateBook/${id}`
+        : 'https://mission13erickson-d0c3dvhkc0bde8dg.eastus-01.azurewebsites.net/Bookstore/AddBook';
       
       const method = isEditing ? 'PUT' : 'POST';
       
